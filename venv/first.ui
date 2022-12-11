@@ -77,7 +77,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>../../../Downloads/PKracker-logo3.png</pixmap>
+        <pixmap>venv/Assets/PKracker-logo3.png</pixmap>
        </property>
       </widget>
      </item>
