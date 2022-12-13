@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1195</width>
+    <height>799</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="bgwidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>-10</y>
+     <width>1201</width>
+     <height>801</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>300</width>
+     <height>50</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget#bgwidget{
+	background-color: rgb(253, 253, 255);
+}</string>
+   </property>
+   <widget class="QLabel" name="lbl_login">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>230</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>crak paswords</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

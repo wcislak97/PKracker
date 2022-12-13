@@ -150,7 +150,7 @@ color: rgb(57, 61, 63);</string>
       </widget>
      </item>
      <item alignment="Qt::AlignHCenter">
-      <widget class="QPushButton" name="createAccountButton">
+      <widget class="QPushButton" name="btn_login">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -181,7 +181,7 @@ border-radius: 10px;</string>
       </widget>
      </item>
      <item alignment="Qt::AlignHCenter">
-      <widget class="QPushButton" name="loginButton">
+      <widget class="QPushButton" name="btn_createAccount">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
