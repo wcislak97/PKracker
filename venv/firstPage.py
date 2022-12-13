@@ -9,3 +9,5 @@ class FirstPage(QDialog):
     def __init__(self):
         super(FirstPage, self).__init__()
         loadUi("./UI/first.ui", self)
+
+

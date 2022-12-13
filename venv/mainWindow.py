@@ -2,6 +2,7 @@ import sys
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget
+import re
 
 # #app specific imports
 from login import *
@@ -42,6 +43,8 @@ class MainWindow(QtWidgets.QStackedWidget):
 #we open the first screen here
         self.goto_firstPage()
 
+
+
 #functions for handling buttons
     def goto_login(self):
         self.setCurrentIndex(self.indexOf(self.loginScreen))
@@ -54,12 +57,53 @@ class MainWindow(QtWidgets.QStackedWidget):
 
     def goto_app(self):
         # TODO implement login with email
-        self.setCurrentIndex(self.indexOf(self.app))
+
+        emailL = self.loginScreen.txtField_username.text()
+        passwordL = self.loginScreen.txtField_password.text()
+
+        regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+
+        if emailL != '' and passwordL != '':
+            if re.fullmatch(regex, emailL):
+                if self.loginScreen.loginToAccount(emailL, passwordL):
+                    self.setCurrentIndex(self.indexOf(self.app))
+                    print('Login success')
+                else:
+                    print('Invalid email or password')
+            else:
+                print('Input text in email field is not an email')
+        else:
+            print('NOT OK - one or more fields are empty')
+
 
     def goto_app_w_gogle(self):
         #TODO implement login to app with google
         self.setCurrentIndex(self.indexOf(self.app))
 
     def goto_register_firstPage(self):
-        #TODO implement register account and go back to first page
-        self.setCurrentIndex(self.indexOf(self.firstPage))
+        #TODO show a message or smth after login
+
+        emailR = self.registration.txtField_email.text()
+        passwordR = self.registration.txtField_password.text()
+        passwordR2 = self.registration.txtField_password_2.text()
+
+        regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+        #email validation regex from  https://www.geeksforgeeks.org/check-if-email-address-valid-or-not-in-python/
+
+        if emailR != '' and passwordR!='' and passwordR2!='':
+            if re.fullmatch(regex, emailR):
+                if passwordR == passwordR2:
+                    if len(passwordR) >= 6:
+                        print('OK - creating account')
+                        print(emailR, ' ', passwordR, ' ', passwordR2)
+                        self.registration.createAnAccount(emailR,passwordR)
+                        #self.setCurrentIndex(self.indexOf(self.firstPage))
+                    else:
+                        print('Password must be a string at least 6 characters long.')
+                else:
+                    print('Passwords do not match')
+            else:
+                print('Input text in email field is not an email')
+        else:
+            print('NOT OK - one or more fields are empty')
+
