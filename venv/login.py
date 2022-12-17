@@ -12,7 +12,7 @@ import pyrebase
 class LoginScreen(QDialog):
     def __init__(self):
         super(LoginScreen,self).__init__()
-        loadUi("./UI/login.ui",self)
+        loadUi("venv/UI/login.ui",self)
         self.txtField_password.setEchoMode(QtWidgets.QLineEdit.Password)
 
 # login with email account
