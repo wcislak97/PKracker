@@ -181,6 +181,13 @@ border-width: 2px</string>
         </widget>
        </item>
        <item>
+        <widget class="QLabel" name="lbl_message">
+         <property name="text">
+          <string> </string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <property name="spacing">
           <number>150</number>

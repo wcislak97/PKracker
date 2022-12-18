@@ -9,9 +9,10 @@ from firebase_admin import auth
 class RegistrationScreen(QDialog):
     def __init__(self):
         super(RegistrationScreen,self).__init__()
-        loadUi("venv/UI/registration.ui",self)
+        loadUi("./UI/registration.ui",self)
         self.txtField_password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.txtField_password_2.setEchoMode(QtWidgets.QLineEdit.Password)
+
 
     def createAnAccount(self,email,password):
 
@@ -19,5 +20,7 @@ class RegistrationScreen(QDialog):
         firebase_admin.initialize_app(cred)
         try:
             user = auth.create_user(email=email, password=password)
+            return 1
         except:
+            return 0
             print("Email already exists")

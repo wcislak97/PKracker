@@ -8,6 +8,6 @@ from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget
 class FirstPage(QDialog):
     def __init__(self):
         super(FirstPage, self).__init__()
-        loadUi("venv/UI/first.ui", self)
+        loadUi("./UI/first.ui", self)
 
 

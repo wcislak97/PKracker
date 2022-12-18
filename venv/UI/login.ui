@@ -61,7 +61,7 @@
      <property name="rightMargin">
       <number>0</number>
      </property>
-     <item row="7" column="0">
+     <item row="4" column="0">
       <layout class="QVBoxLayout" name="verticalLayout">
        <property name="leftMargin">
         <number>200</number>
@@ -306,6 +306,13 @@ border-radius: 10px;</string>
             </property>
             <property name="text">
              <string>LOGIN WITH GOOGLE</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lbl_message">
+            <property name="text">
+             <string> </string>
             </property>
            </widget>
           </item>

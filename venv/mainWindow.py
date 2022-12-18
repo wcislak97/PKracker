@@ -43,14 +43,20 @@ class MainWindow(QtWidgets.QStackedWidget):
 #we open the first screen here
         self.goto_firstPage()
 
+        self.app.btn_decode.clicked.connect(self.onDecodeButtonClicked)
 
 
 #functions for handling buttons
     def goto_login(self):
         self.setCurrentIndex(self.indexOf(self.loginScreen))
+        self.loginScreen.txtField_username.setText('')
+        self.loginScreen.txtField_password.setText('')
 
     def goto_registration(self):
         self.setCurrentIndex(self.indexOf(self.registration))
+        self.registration.txtField_email.setText('')
+        self.registration.txtField_password.setText('')
+        self.registration.txtField_password_2.setText('')
 
     def goto_firstPage(self):
         self.setCurrentIndex(self.indexOf(self.firstPage))
@@ -69,11 +75,11 @@ class MainWindow(QtWidgets.QStackedWidget):
                     self.setCurrentIndex(self.indexOf(self.app))
                     print('Login success')
                 else:
-                    print('Invalid email or password')
+                    self.loginScreen.lbl_message.setText('Invalid email or password')
             else:
-                print('Input text in email field is not an email')
+                self.loginScreen.lbl_message.setText('Input text in email field is not an email')
         else:
-            print('NOT OK - one or more fields are empty')
+            self.loginScreen.lbl_message.setText('One or more fields are empty')
 
 
     def goto_app_w_gogle(self):
@@ -94,16 +100,30 @@ class MainWindow(QtWidgets.QStackedWidget):
             if re.fullmatch(regex, emailR):
                 if passwordR == passwordR2:
                     if len(passwordR) >= 6:
-                        print('OK - creating account')
-                        print(emailR, ' ', passwordR, ' ', passwordR2)
-                        self.registration.createAnAccount(emailR,passwordR)
-                        #self.setCurrentIndex(self.indexOf(self.firstPage))
+                        temp = self.registration.createAnAccount(emailR, passwordR)
+                        if temp:
+                            self.registration.lbl_message.setText('Account created successfully')
+                            print(emailR, ' ', passwordR, ' ', passwordR2)
+                        else:
+                            self.registration.lbl_message.setText('Account with this email already exists, please try to login')
+                            print(emailR, ' ', passwordR, ' ', passwordR2)
                     else:
-                        print('Password must be a string at least 6 characters long.')
+                        self.registration.lbl_message.setText('Password must be a string at least 6 characters long.')
                 else:
-                    print('Passwords do not match')
+                    self.registration.lbl_message.setText('Passwords do not match')
             else:
-                print('Input text in email field is not an email')
+                self.registration.lbl_message.setText('Input text in email field is not an email')
         else:
-            print('NOT OK - one or more fields are empty')
+            self.registration.lbl_message.setText('One or more fields are empty')
 
+
+    def onDecodeButtonClicked(self):
+        algorytm=self.app.combo_algorytmy.currentText()
+        metoda=self.app.combo_metody.currentText()
+        slownik=self.app.combo_slowniki.currentText()
+        hash=self.app.txtField_hash.text()
+
+        if algorytm=='' or metoda=='' or (metoda=='Słownikowa' and slownik=='') or hash=='':
+            self.app.lbl_wynik_out.setText('One or more fields are empty')
+        else:
+            self.app.onDecodeButtonClicked()
