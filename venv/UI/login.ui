@@ -311,8 +311,14 @@ border-radius: 10px;</string>
           </item>
           <item>
            <widget class="QLabel" name="lbl_message">
+            <property name="styleSheet">
+             <string notr="true">font: 63 8pt &quot;Saira SemiCondensed SemiBold&quot;;
+color: rgb(57, 61, 63);
+
+</string>
+            </property>
             <property name="text">
-             <string> </string>
+             <string/>
             </property>
            </widget>
           </item>
