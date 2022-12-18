@@ -5,11 +5,12 @@ from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import auth
+from globalConfigs import *
 
 class RegistrationScreen(QDialog):
     def __init__(self):
         super(RegistrationScreen,self).__init__()
-        loadUi("./UI/registration.ui",self)
+        loadUi(registrationPath,self)
         self.txtField_password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.txtField_password_2.setEchoMode(QtWidgets.QLineEdit.Password)
 

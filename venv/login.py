@@ -6,13 +6,14 @@ from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget
 import firebase_admin
 from firebase_admin import credentials
 import pyrebase
+from globalConfigs import *
 
 #app specific imports
 
 class LoginScreen(QDialog):
     def __init__(self):
         super(LoginScreen,self).__init__()
-        loadUi("./UI/login.ui",self)
+        loadUi(loginPath,self)
         self.txtField_password.setEchoMode(QtWidgets.QLineEdit.Password)
 
 # login with email account
