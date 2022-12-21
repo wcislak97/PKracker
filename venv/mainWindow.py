@@ -9,6 +9,7 @@ from login import *
 from firstPage import *
 from registration import *
 from app import *
+from Admin import *
 
 class MainWindow(QtWidgets.QStackedWidget):
     def __init__(self):
@@ -19,12 +20,15 @@ class MainWindow(QtWidgets.QStackedWidget):
         self.loginScreen = LoginScreen()
         self.registration = RegistrationScreen()
         self.app = App();
+        self.admin = Admin();
 
 #adding widget so we can open them overall
         self.addWidget(self.firstPage)
         self.addWidget(self.loginScreen)
         self.addWidget(self.registration)
         self.addWidget(self.app)
+        self.addWidget(self.admin)
+
 #setting size
         self.setFixedWidth(1200)
         self.setFixedHeight(800)
@@ -72,7 +76,10 @@ class MainWindow(QtWidgets.QStackedWidget):
         if emailL != '' and passwordL != '':
             if re.fullmatch(regex, emailL):
                 if self.loginScreen.loginToAccount(emailL, passwordL):
-                    self.setCurrentIndex(self.indexOf(self.app))
+                    if emailL=="pekakracker@gmail.com":
+                        self.setCurrentIndex(self.indexOf(self.admin))
+                    else:
+                        self.setCurrentIndex(self.indexOf(self.app))
                     print('Login success')
                 else:
                     self.loginScreen.lbl_message.setText('Invalid email or password')
