@@ -18,16 +18,6 @@ class LoginScreen(QDialog):
 
 # login with email account
     def loginToAccount(self,email,password):
-        firebaseConfig = {
-            'apiKey': "AIzaSyAGo56e7YlnOtusBbCkM-kNboTIEMYtQg8",
-            'authDomain': "pkracker-bf681.firebaseapp.com",
-            'projectId': "pkracker-bf681",
-            'storageBucket': "pkracker-bf681.appspot.com",
-            'messagingSenderId': "511079893840",
-            'appId': "1:511079893840:web:99f1d34c6030b111e07a55",
-            'measurementId': "G-FGBKW4R2VL",
-            'databaseURL': ""}
-
         firebase=pyrebase.initialize_app(firebaseConfig)
         auth=firebase.auth()
 

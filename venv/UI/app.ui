@@ -158,7 +158,7 @@ color: rgb(57, 61, 63);
 </string>
          </property>
          <property name="text">
-          <string>Enryption algorithm</string>
+          <string>Encryption algorithm</string>
          </property>
         </widget>
        </item>
