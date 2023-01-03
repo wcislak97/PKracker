@@ -5,20 +5,20 @@
 #odkomentuj sobie swoje i zakomentuj moje XD
 #sciezki Agaty
 
-appPath="./UI/app.ui"
-firstPagePath="./UI/first.ui"
-loginPath="./UI/login.ui"
-registrationPath="./UI/registration.ui"
-adminPath="./UI/admin.ui"
+# appPath="./UI/app.ui"
+# firstPagePath="./UI/first.ui"
+# loginPath="./UI/login.ui"
+# registrationPath="./UI/registration.ui"
+# adminPath="./UI/admin.ui"
 
 
 # sciezki Pauliny
 #
-# appPath="venv/UI/app.ui"
-# firstPagePath="venv/UI/first.ui"
-# loginPath="venv/UI/login.ui"
-# registrationPath="venv/UI/registration.ui"
-# adminPath="venv/UI/admin.ui"
+appPath="venv/UI/app.ui"
+firstPagePath="venv/UI/first.ui"
+loginPath="venv/UI/login.ui"
+registrationPath="venv/UI/registration.ui"
+adminPath="venv/UI/admin.ui"
 
 
 firebaseConfig = {
