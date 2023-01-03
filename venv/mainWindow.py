@@ -70,6 +70,7 @@ class MainWindow(QtWidgets.QStackedWidget):
         self.registration.txtField_email.setText('')
         self.registration.txtField_password.setText('')
         self.registration.txtField_password_2.setText('')
+        self.registration.lbl_message.setText('')
 
     def goto_firstPage(self):
         self.setCurrentIndex(self.indexOf(self.firstPage))
@@ -117,13 +118,7 @@ class MainWindow(QtWidgets.QStackedWidget):
             if re.fullmatch(regex, emailR):
                 if passwordR == passwordR2:
                     if len(passwordR) >= 6:
-                        temp = self.registration.createAnAccount(emailR, passwordR)
-                        if temp:
-                            self.registration.lbl_message.setText('Account created successfully')
-                            print(emailR, ' ', passwordR, ' ', passwordR2)
-                        else:
-                            self.registration.lbl_message.setText('Account with this email already exists, please try to login')
-                            print(emailR, ' ', passwordR, ' ', passwordR2)
+                        self.registration.createAnAccount(emailR, passwordR)
                     else:
                         self.registration.lbl_message.setText('Password must be a string at least 6 characters long.')
                 else:

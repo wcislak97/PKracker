@@ -13,15 +13,14 @@ class RegistrationScreen(QDialog):
         loadUi(registrationPath,self)
         self.txtField_password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.txtField_password_2.setEchoMode(QtWidgets.QLineEdit.Password)
-
-
-    def createAnAccount(self,email,password):
-
         cred = credentials.Certificate("pkracker-bf681-firebase-adminsdk-652ii-647b008451.json")
         firebase_admin.initialize_app(cred)
+
+    def createAnAccount(self,email,password):
         try:
             user = auth.create_user(email=email, password=password)
-            return 1
+            self.lbl_message.setText('Account created successfully')
         except:
-            return 0
-            print("Email already exists")
+            self.lbl_message.setText('Account with this email already exists, please try to login')
+
+
