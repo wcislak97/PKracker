@@ -10,6 +10,7 @@
 # loginPath="./UI/login.ui"
 # registrationPath="./UI/registration.ui"
 # adminPath="./UI/admin.ui"
+# keyPath="pkracker-bf681-firebase-adminsdk-652ii-647b008451.json"
 
 
 # sciezki Pauliny
@@ -19,6 +20,7 @@ firstPagePath="venv/UI/first.ui"
 loginPath="venv/UI/login.ui"
 registrationPath="venv/UI/registration.ui"
 adminPath="venv/UI/admin.ui"
+keyPath="venv/pkracker-bf681-firebase-adminsdk-652ii-647b008451.json"
 
 
 firebaseConfig = {

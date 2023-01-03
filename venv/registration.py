@@ -13,7 +13,7 @@ class RegistrationScreen(QDialog):
         loadUi(registrationPath,self)
         self.txtField_password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.txtField_password_2.setEchoMode(QtWidgets.QLineEdit.Password)
-        cred = credentials.Certificate("pkracker-bf681-firebase-adminsdk-652ii-647b008451.json")
+        cred = credentials.Certificate(keyPath)
         firebase_admin.initialize_app(cred)
 
     def createAnAccount(self,email,password):
