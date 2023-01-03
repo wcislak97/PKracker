@@ -1,4 +1,5 @@
 import sys
+import os
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget
@@ -10,6 +11,7 @@ from firstPage import *
 from registration import *
 from app import *
 from Admin import *
+from dbConn import *
 
 class MainWindow(QtWidgets.QStackedWidget):
     def __init__(self):
@@ -21,6 +23,7 @@ class MainWindow(QtWidgets.QStackedWidget):
         self.registration = RegistrationScreen()
         self.app = App();
         self.admin = Admin();
+        self.dbConn=dbConn();
 
 #adding widget so we can open them overall
         self.addWidget(self.firstPage)
@@ -44,11 +47,17 @@ class MainWindow(QtWidgets.QStackedWidget):
         self.registration.btn_back.clicked.connect(self.goto_firstPage)
         self.registration.btn_register.clicked.connect(self.goto_register_firstPage)
 
-#we open the first screen here
+
+    #we open the first screen here
         self.goto_firstPage()
 
         self.app.btn_decode.clicked.connect(self.onDecodeButtonClicked)
 
+    #admin buttons
+        self.admin.btn_addAdmin.clicked.connect(self.onAddAdminButtonClicked)
+        self.admin.btn_addItem.clicked.connect(self.onAddItemToSlownikButtonClicked)
+        self.admin.btn_addDic.clicked.connect(self.onAddDictionaryButtonClicked)
+        self.admin.btn_removeAdmin.clicked.connect(self.onRemoveAdminButtonClicked)
 
 #functions for handling buttons
     def goto_login(self):
@@ -70,13 +79,14 @@ class MainWindow(QtWidgets.QStackedWidget):
 
         emailL = self.loginScreen.txtField_username.text()
         passwordL = self.loginScreen.txtField_password.text()
-
+        listaAdminow=dbConn.GetWszystkieAdminy(self.dbConn)
         regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 
         if emailL != '' and passwordL != '':
             if re.fullmatch(regex, emailL):
                 if self.loginScreen.loginToAccount(emailL, passwordL):
-                    if emailL=="pekakracker@gmail.com":
+                    if emailL.lower() in [l.lower() for l in listaAdminow]:
+                        print('ok')
                         self.setCurrentIndex(self.indexOf(self.admin))
                     else:
                         self.setCurrentIndex(self.indexOf(self.app))
@@ -134,3 +144,53 @@ class MainWindow(QtWidgets.QStackedWidget):
             self.app.lbl_wynik_out.setText('One or more fields are empty')
         else:
             self.app.onDecodeButtonClicked()
+
+
+    def onAddAdminButtonClicked(self):
+        inputEmail=self.admin.txtField_email.text()
+
+        regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+        # email validation regex from  https://www.geeksforgeeks.org/check-if-email-address-valid-or-not-in-python/
+
+        if inputEmail=='':
+            self.admin.lbl_output_1.setText('This field cannot be empty')
+        else:
+            if re.fullmatch(regex, inputEmail):
+                self.admin.onAddAdminButtonClicked(inputEmail)
+            else:
+                self.admin.lbl_output_1.setText('This has to be email')
+
+    def onAddItemToSlownikButtonClicked(self):
+        inputSlownik=self.admin.combo_slowniki.currentText()
+        inputWord=self.admin.txtField_word.text()
+
+        if inputSlownik == '' or inputWord == '':
+            self.admin.lbl_output_2.setText('One of the fields is empty')
+        else:
+            self.admin.onAddItemToSlownikButtonClicked(inputSlownik,inputWord)
+
+    def onAddDictionaryButtonClicked(self):
+        inputPath = self.admin.txtField_pathToDic.text()
+        dictionaryName=self.admin.txtField_dicName.text()
+
+        if inputPath == '' or dictionaryName=='':
+            self.admin.lbl_output_3.setText('One of the fields is empty')
+        else:
+            if inputPath.endswith(".txt"):
+                escaped_path = inputPath.replace('\\', '\\\\')
+
+                print(escaped_path)
+                if os.path.exists(escaped_path):
+                    self.admin.onAddDictionaryButtonClicked(dictionaryName,inputPath)
+                else:
+                    self.admin.lbl_output_3.setText("The file does not exist")
+            else:
+                self.admin.lbl_output_3.setText("File has to be in txt format")
+
+    def onRemoveAdminButtonClicked(self):
+        inputAdmin = self.admin.combo_admins.currentText()
+
+        if inputAdmin =='':
+            self.admin.lbl_output_4.setText('This field cannot be empty')
+        else:
+            self.admin.onRemoveAdminButtonClicked(inputAdmin)

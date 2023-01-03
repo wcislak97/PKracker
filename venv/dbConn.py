@@ -4,7 +4,7 @@ from globalConfigs import *
 
 #1 Inicjalizacja z app.py + uzycie funkcji
 #self.dbConn = dbConn()
-# dbConn.PushSlownik(self.dbConn)
+# dbConn.PushSlownik(self.dbConn,nazwaSlownika,slowo)
 
 
 class dbConn:
@@ -20,11 +20,9 @@ class dbConn:
     #dodaje liste slow do istniejącego lub nowego slownika
     #liste dodaje sie w metodzie
     #tworzy nowy slownik jesli nazwaSlownika nie istnieje i dodaje liste slow. jesli slownik istnieje to dodaje po prostu liste slow
-    def PushSlownik(self,nazwaSlownika):
-        data=["ble","bla"]
+    def PushSlownik(self,nazwaSlownika,slowo):
         try:
-            for val in data:
-                self.db.child("slownik").child(nazwaSlownika).child("words").push(val)
+                self.db.child("slownik").child(nazwaSlownika).child("words").push(slowo)
         except:
             print("db problem 1")
 
@@ -57,6 +55,25 @@ class dbConn:
         except:
             print("db problem 5")
 
+    #PushAdmin
+    #dodaje znacznik kto jest adminem
+    def PushAdmin(self):
+        data = ['PeKaKracker@gmail.com']
+        try:
+            for val in data:
+                self.db.child("adminRights").push(val)
+        except:
+            print("db problem 5")
+
+    #PushAdminFromInput
+    #dodaje admina do listy adminów
+    def PushAdminFromInput(self, inputVal):
+        data=inputVal;
+
+        try:
+            results=self.db.child("adminRights").push(data)
+        except:
+            print("db problem 11")
 
     #PushAlgorytmy
     #dodaje algorytmy z listy data do bazy pod algorytmy -> tu itemy z listy
@@ -96,6 +113,18 @@ class dbConn:
         print(lista)
         return lista
 
+        # GetWszystkieSlowniki
+        # zwraca liste wszystkich slownikow
+    def GetWszystkieAdminy(self):
+        lista = []
+        try:
+            admins = self.db.child("adminRights").get()
+            for admin in admins.each():
+                lista.append(admin.val())
+        except:
+            print("db problem 3")
+        print(lista)
+        return lista
 
     #GetWszystkieMetody
     #zwraca liste wszystkich metod
@@ -134,3 +163,13 @@ class dbConn:
             print("db problem 4")
 
 
+    def RemoveAdmin(self,nazwaAdmina):
+        try:
+            admins = self.db.child("adminRights").get()
+            for admin in admins.each():
+                if nazwaAdmina == admin.val():
+                   keyAdmin=admin.key()
+                   ref = self.db.child("adminRights").child(keyAdmin)
+                   ref.remove()
+        except:
+            print("db problem 112")

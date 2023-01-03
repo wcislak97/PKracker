@@ -16,8 +16,9 @@ class App(QDialog):
         loadUi(appPath, self)
         self.dbConn = dbConn()
 
-        #dbConn.PushSlownikFromFile(self.dbConn,"testSlownik","C:\\Users\\agata\\Desktop\\slownik.txt")
 
+
+        #dbConn.PushSlownikFromFile(self.dbConn,"testSlownik","C:\\Users\\agata\\Desktop\\slownik.txt")
         #dbConn.GetSlowaZeSlownik(self.dbConn, "nazwaSlownika")
 
         lista_slowniki_db=dbConn.GetWszystkieSlowniki(self.dbConn)
