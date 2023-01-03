@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget
 
 from globalConfigs import *
 from dbConn import *
+from crack import *
 
 
 
@@ -99,12 +100,18 @@ class App(QDialog):
                     print(value)  #to jest lista, wartości od [0,0,0,0] -> do [1,1,1,1]
                     valueSpinBox = self.spinBox.value()
                     print(valueSpinBox)
+                    hash = self.txtField_hash.text()
 
 
 
                     #implementacja md5 bruteforce
 
-                    print("brute force md5 implementation")
+                    # print("brute force md5 implementation")
+
+                    # self.lbl_wynik_out.setText(decryptBruteForce("900150983cd24fb0d6963f7d28e17f72", valueSpinBox, value))
+                    print(decryptBruteForce(hash, valueSpinBox, value))
+                    self.lbl_wynik_out.setText(decryptBruteForce(hash, valueSpinBox, value))
+
 
             else:
                 print("Some other algorithm brute force implementation")

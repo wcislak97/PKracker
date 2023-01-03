@@ -17,22 +17,41 @@ digitsList = list(map(chr, range(48,58)))
 # print(specialCharactersList4)
 # print(digitsList)
 
-def decryptBruteForce(myHash, maxLen):
+def decryptBruteForce(myHash, maxLenInput, mode):
+	# Prepare set of characters chosen by user
+	charListInput = mode
+	charListNames = [upperCaseList, lowerCaseList, digitsList, specialCharactersListTotal]
+	charList = []
+	for idx, x in enumerate(charListInput):
+		if x == 1:
+			charList += charListNames[idx]
+	# print(charList)
+	# If maxLen == 0 then we want to iterate from 1 character
+	start = 0
+	maxLen = 0
+	if maxLenInput == 0:
+		start = 1
+		maxLen = 5
+	else:
+		start = maxLenInput
+		maxLen = maxLenInput
+
 	# Flag for founded hash
 	found = False
 	# Generate all combinations of the characters
-	for x in range(1, maxLen + 1):
-		combinations = itertools.product(lowerCaseList, repeat=x)
+	for x in range(start, maxLen + 1):
+		combinations = itertools.product(charList, repeat=x)
 		# Print each combination
 		for combination in combinations:
 			investigatedHash = hashlib.md5((''.join(combination)).encode('utf-8')).hexdigest()
 			if myHash == investigatedHash:
-				print("Found matching hash:", myHash)
+				# print("Found matching hash:", myHash, "\nPassword:", (''.join(combination)))
 				found = True
-				break
+				return (''.join(combination))
 		x += 1
 	if found == False:
-		print("No matching hash found.")
+		return ("No matching hash found.")
+	return 0
 
-
-decryptBruteForce("900150983cd24fb0d6963f7d28e17f72",3)
+# mymode = [1, 0, 0, 0]
+# print(decryptBruteForce("900150983cd24fb0d6963f7d28e17f72", 2, mymode))
