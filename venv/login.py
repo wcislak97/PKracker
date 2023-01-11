@@ -16,9 +16,10 @@ class LoginScreen(QDialog):
         loadUi(loginPath,self)
         self.txtField_password.setEchoMode(QtWidgets.QLineEdit.Password)
 
+
 # login with email account
     def loginToAccount(self,email,password):
-        firebase=pyrebase.initialize_app(firebaseConfig)
+        firebase = pyrebase.initialize_app(firebaseConfig)
         auth=firebase.auth()
 
         try:

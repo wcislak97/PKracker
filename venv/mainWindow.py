@@ -64,6 +64,7 @@ class MainWindow(QtWidgets.QStackedWidget):
 #functions for handling buttons
     def logoutButtonClicked(self):
         print('I logged out')
+
         self.setCurrentIndex(self.indexOf(self.firstPage))
 
 
@@ -104,10 +105,21 @@ class MainWindow(QtWidgets.QStackedWidget):
                         self.admin.txtField_dicName.setText('')
                         self.admin.txtField_pathToDic.setText('')
                         self.admin.lbl_output_3.setText('')
+                        self.admin.combo_deleteDict.setCurrentIndex(-1)
+                        self.admin.combo_slowniki.setCurrentIndex(-1)
+                        self.admin.combo_admins.setCurrentIndex(-1)
                     else:
                         self.setCurrentIndex(self.indexOf(self.app))
                         self.app.txtField_hash.setText('')
                         self.app.lbl_wynik_out.setText('')
+                        self.app.combo_metody.setCurrentIndex(-1)
+                        self.app.combo_slowniki.setCurrentIndex(-1)
+                        self.app.combo_algorytmy.setCurrentIndex(-1)
+                        self.app.checkBox.setChecked(False)
+                        self.app.checkBox_2.setChecked(False)
+                        self.app.checkBox_3.setChecked(False)
+                        self.app.checkBox_4.setChecked(False)
+
                     print('Login success')
                 else:
                     self.loginScreen.lbl_message.setText('Invalid email or password')
