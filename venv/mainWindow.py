@@ -202,6 +202,11 @@ class MainWindow(QtWidgets.QStackedWidget):
                 print(escaped_path)
                 if os.path.exists(escaped_path):
                     self.admin.onAddDictionaryButtonClicked(dictionaryName,inputPath)
+                    self.app.combo_slowniki.clear()
+                    self.app.lista_slowniki_db=dbConn.GetWszystkieSlowniki(self.app.dbConn)
+                    self.app.combo_slowniki.addItems(self.app.lista_slowniki_db)
+                    self.app.combo_slowniki.setCurrentIndex(-1)
+
                 else:
                     self.admin.lbl_output_3.setText("The file does not exist")
             else:
