@@ -60,6 +60,7 @@ class Admin(QDialog):
         else:
             try:
                 dbConn.PushSlownikFromFile(self.dbConn,nazwaSlownika,inputPath)
+                self.lbl_output_3.setText('Dictionary added successfully')
             except:
                 self.lbl_output_3.setText('Something went wrong')
 
@@ -67,6 +68,7 @@ class Admin(QDialog):
         try:
 
             dbConn.RemoveAdmin(self.dbConn,inputAdmin)
+            self.lbl_output_4.setText('Admin removed successfully')
         except:
             self.lbl_output_4.setText('Something went wrong')
 

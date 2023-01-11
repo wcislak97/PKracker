@@ -42,7 +42,6 @@ class MainWindow(QtWidgets.QStackedWidget):
 
         self.loginScreen.btn_back.clicked.connect(self.goto_firstPage)
         self.loginScreen.btn_login.clicked.connect(self.goto_app)
-        self.loginScreen.btn_login_w_gogle.clicked.connect(self.goto_app_w_gogle)
 
         self.registration.btn_back.clicked.connect(self.goto_firstPage)
         self.registration.btn_register.clicked.connect(self.goto_register_firstPage)
@@ -52,14 +51,21 @@ class MainWindow(QtWidgets.QStackedWidget):
         self.goto_firstPage()
 
         self.app.btn_decode.clicked.connect(self.onDecodeButtonClicked)
+        self.app.btn_logout.clicked.connect(self.logoutButtonClicked)
 
     #admin buttons
         self.admin.btn_addAdmin.clicked.connect(self.onAddAdminButtonClicked)
         self.admin.btn_addItem.clicked.connect(self.onAddItemToSlownikButtonClicked)
         self.admin.btn_addDic.clicked.connect(self.onAddDictionaryButtonClicked)
         self.admin.btn_removeAdmin.clicked.connect(self.onRemoveAdminButtonClicked)
+        self.admin.btn_logout.clicked.connect(self.logoutButtonClicked)
 
 #functions for handling buttons
+    def logoutButtonClicked(self):
+        print('I logged out')
+        self.setCurrentIndex(self.indexOf(self.firstPage))
+
+
     def goto_login(self):
         self.setCurrentIndex(self.indexOf(self.loginScreen))
         self.loginScreen.txtField_username.setText('')
@@ -99,10 +105,6 @@ class MainWindow(QtWidgets.QStackedWidget):
         else:
             self.loginScreen.lbl_message.setText('One or more fields are empty')
 
-
-    def goto_app_w_gogle(self):
-        #TODO implement login to app with google
-        self.setCurrentIndex(self.indexOf(self.app))
 
     def goto_register_firstPage(self):
         #TODO show a message or smth after login
