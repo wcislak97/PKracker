@@ -87,6 +87,8 @@ class App(QDialog):
 
             if nazwaAlgorytmu == "MD5":
                 print("dictionary md5 implementation")
+                hash = self.txtField_hash.text()
+                self.lbl_wynik_out.setText(decryptDict(hash,listaSlow))
 
             else:
                 print("Some other algorithm dictionary implementation")

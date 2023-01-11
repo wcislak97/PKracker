@@ -55,3 +55,15 @@ def decryptBruteForce(myHash, maxLenInput, mode):
 
 # mymode = [1, 0, 0, 0]
 # print(decryptBruteForce("900150983cd24fb0d6963f7d28e17f72", 2, mymode))
+def decryptDict(myHash, dictionary):
+	# Flag for founded hash
+	found = False
+	# Iterate over dictionary
+	for x in dictionary:
+		investigatedHash = hashlib.md5((''.join(x)).encode('utf-8')).hexdigest()
+		if myHash == investigatedHash:
+			found = True
+			return (''.join(x))
+	if found == False:
+		return ("No matching hash found.")
+	return 0
