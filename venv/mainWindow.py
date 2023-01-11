@@ -59,6 +59,7 @@ class MainWindow(QtWidgets.QStackedWidget):
         self.admin.btn_addDic.clicked.connect(self.onAddDictionaryButtonClicked)
         self.admin.btn_removeAdmin.clicked.connect(self.onRemoveAdminButtonClicked)
         self.admin.btn_logout.clicked.connect(self.logoutButtonClicked)
+        self.admin.btn_removeDict.clicked.connect(self.removeDictionaryButtonClicked)
 
 #functions for handling buttons
     def logoutButtonClicked(self):
@@ -95,8 +96,18 @@ class MainWindow(QtWidgets.QStackedWidget):
                     if emailL.lower() in [l.lower() for l in listaAdminow]:
                         print('ok')
                         self.setCurrentIndex(self.indexOf(self.admin))
+                        self.admin.txtField_email.setText('')
+                        self.admin.lbl_output_1.setText('')
+                        self.admin.lbl_output_4.setText('')
+                        self.admin.txtField_word.setText('')
+                        self.admin.lbl_output_2.setText('')
+                        self.admin.txtField_dicName.setText('')
+                        self.admin.txtField_pathToDic.setText('')
+                        self.admin.lbl_output_3.setText('')
                     else:
                         self.setCurrentIndex(self.indexOf(self.app))
+                        self.app.txtField_hash.setText('')
+                        self.app.lbl_wynik_out.setText('')
                     print('Login success')
                 else:
                     self.loginScreen.lbl_message.setText('Invalid email or password')
@@ -191,3 +202,11 @@ class MainWindow(QtWidgets.QStackedWidget):
             self.admin.lbl_output_4.setText('This field cannot be empty')
         else:
             self.admin.onRemoveAdminButtonClicked(inputAdmin)
+
+    def removeDictionaryButtonClicked(self):
+        inputDictionary = self.admin.combo_deleteDict.currentText()
+
+        if inputDictionary =='':
+            self.admin.lbl_output_5.setText('This field cannot be empty')
+        else:
+            self.admin.removeDictionaryButtonClicked(inputDictionary)

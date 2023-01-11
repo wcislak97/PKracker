@@ -68,31 +68,6 @@
         <number>50</number>
        </property>
        <item>
-        <widget class="QLabel" name="lbl_slownik_3">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 63 14pt &quot;Saira SemiCondensed SemiBold&quot;;
-color: rgb(57, 61, 63);
-
-</string>
-         </property>
-         <property name="text">
-          <string>People Administration</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QLabel" name="lbl_slownik_9">
          <property name="minimumSize">
           <size>
@@ -108,7 +83,7 @@ color: rgb(57, 61, 63);
          </property>
          <property name="styleSheet">
           <string notr="true">font: 63 14pt &quot;Saira SemiCondensed SemiBold&quot;;
-color: rgb(57, 61, 63);
+color: rgb(0, 130,0);
 
 </string>
          </property>
@@ -218,7 +193,7 @@ color: rgb(57, 61, 63);
          </property>
          <property name="styleSheet">
           <string notr="true">font: 63 14pt &quot;Saira SemiCondensed SemiBold&quot;;
-color: rgb(57, 61, 63);
+color: rgb(220,20,60);
 
 </string>
          </property>
@@ -313,55 +288,117 @@ color: rgb(57, 61, 63);
         </widget>
        </item>
        <item>
-        <spacer name="verticalSpacer_8">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
+        <widget class="QLabel" name="lbl_slownik_13">
+         <property name="minimumSize">
           <size>
-           <width>13</width>
-           <height>40</height>
+           <width>0</width>
+           <height>30</height>
           </size>
          </property>
-        </spacer>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 63 14pt &quot;Saira SemiCondensed SemiBold&quot;;
+color: rgb(220,20,60);
+
+</string>
+         </property>
+         <property name="text">
+          <string>Remove dictionary from list</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="lbl_slownik_14">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 63 10pt &quot;Saira SemiCondensed SemiBold&quot;;
+color: rgb(57, 61, 63);
+
+</string>
+         </property>
+         <property name="text">
+          <string>Dictionary name</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="combo_deleteDict">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(57, 61, 63);;
+border-radius: 10px;
+border-style: solid;
+border-width: 2px</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_removeDict">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 63 10pt &quot;Saira SemiCondensed SemiBold&quot;;
+background-color: rgb(57, 61, 63);
+color: rgb(253, 253, 255);
+border-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>Remove dictionary</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="lbl_output_5">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 63 10pt &quot;Saira SemiCondensed SemiBold&quot;;
+color: rgb(57, 61, 63);
+
+</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
        </item>
        <item>
         <spacer name="verticalSpacer_13">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>13</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <spacer name="verticalSpacer_12">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>13</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <spacer name="verticalSpacer_15">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
@@ -472,31 +509,6 @@ border-radius: 10px;</string>
         <number>50</number>
        </property>
        <item>
-        <widget class="QLabel" name="lbl_slownik_4">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 63 14pt &quot;Saira SemiCondensed SemiBold&quot;;
-color: rgb(57, 61, 63);
-
-</string>
-         </property>
-         <property name="text">
-          <string>Dictionaries Administration</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QLabel" name="lbl_slownik_2">
          <property name="minimumSize">
           <size>
@@ -512,7 +524,7 @@ color: rgb(57, 61, 63);
          </property>
          <property name="styleSheet">
           <string notr="true">font: 63 14pt &quot;Saira SemiCondensed SemiBold&quot;;
-color: rgb(57, 61, 63);
+color: rgb(0, 130, 0);
 
 </string>
          </property>
@@ -679,7 +691,7 @@ color: rgb(57, 61, 63);
          </property>
          <property name="styleSheet">
           <string notr="true">font: 63 14pt &quot;Saira SemiCondensed SemiBold&quot;;
-color: rgb(57, 61, 63);
+color: rgb(0, 130,0);
 
 </string>
          </property>
