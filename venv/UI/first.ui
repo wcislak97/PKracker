@@ -81,6 +81,16 @@
        </property>
       </widget>
      </item>
+     <item alignment="Qt::AlignHCenter">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>../Assets/PKracker-logo3.png</pixmap>
+       </property>
+      </widget>
+     </item>
      <item>
       <widget class="QLabel" name="label_4">
        <property name="minimumSize">
